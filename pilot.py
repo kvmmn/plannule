@@ -101,7 +101,8 @@ def get_plan(input_dict):
 
 
 def main():
-    image = Image.open("/Users/kvmmn/Desktop/ai.toyon/genx/plannule/banner.png")
+    # image = Image.open("/Users/kvmmn/Desktop/ai.toyon/genx/plannule/banner.png")
+    image = Image.open("banner.png")
     st.image(image, use_column_width=True)
     st.title("Plannule")
     st.text("Project Management Made Easy")
