@@ -1,6 +1,0 @@
-# streamlit
-# openai
-# python-dotenv
-# os-sys
-# json
-# python-time
