@@ -56,31 +56,10 @@ input_dict = {
 }
 
 
-# def get_plan(input_dict):
-#     response = openai.ChatCompletion.create(
-#         model="gpt-3.5-turbo-16k",
-#         messages=[
-#             {
-#                 "role": "system",
-#                 "content": "You are an expert in generating Work Breakdown Structure (WBS) tables based on project attributes. Using the provided project attributes, create a WBS table with cost and duration estimations. The table should be in markdown format suitable for Streamlit, and it must have columns for 'WBS Activity', 'Cost', & 'Duration'. Ensure the output is robust and consistent across different user inputs.",
-#             },
-#             {
-#                 "role": "user",
-#                 "content": f"I'm planning a project with the following attributes:\n1. Category: {input_dict['category']}\n2. Subject: {input_dict['subject']}\n3. Budget: ${input_dict['budget']}\n4. Financial Constraints: {input_dict['financial_constraints']}\n5. Duration: {input_dict['duration']} days\n6. Schedule Constraints: {input_dict['schedule_constraints']}\n7. Comment: {input_dict['comment']}\nPlease generate a WBS table based on these details.",
-#             },
-#             {
-#                 "role": "assistant",
-#                 "content": "Sure! Here's a WBS table for your project:\n\n| WBS Activity | Cost | Duration |\n|--------------|------|----------|\n| Sample Activity 1 | $XXXX | XX days |\n| Sample Activity 2 | $XXXX | XX days |\n... \n\nRemember to adjust the activities, costs, and durations based on the specifics of the project and its constraints.",
-#             },
-#         ],
-#     )
-
-#     return response.choices[0].message["content"]
-
-
 def get_plan(input_dict):
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo-16k",
+    response = openai.chat.completions.create(
+        # model="gpt-3.5-turbo-16k",
+        model='gpt-4-1106-preview',
         messages=[
             {
                 "role": "system",
@@ -97,7 +76,7 @@ def get_plan(input_dict):
         ],
     )
 
-    return response.choices[0].message["content"]
+    return response.choices[0].message.content
 
 
 def main():
